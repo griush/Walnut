@@ -11,12 +11,12 @@
 #endif
 
 #ifdef WL_DEBUG
-	#define WL_ENABLE_ASSERTS
+	#define WL_ENABLE_ASSERTS 0
 #endif
 
-#define WL_ENABLE_VERIFY
+#define WL_ENABLE_VERIFY 0
 
-#ifdef WL_ENABLE_ASSERTS
+#if WL_ENABLE_ASSERTS
 	#ifdef WL_COMPILER_CLANG
 		#define WL_CORE_ASSERT_MESSAGE_INTERNAL(...)  ::Walnut::Log::PrintAssertMessage(::Walnut::Log::Type::Core, "Assertion Failed", ##__VA_ARGS__)
 		#define WL_ASSERT_MESSAGE_INTERNAL(...)  ::Walnut::Log::PrintAssertMessage(::Walnut::Log::Type::Client, "Assertion Failed", ##__VA_ARGS__)
@@ -32,7 +32,7 @@
 	#define WL_ASSERT(condition, ...)
 #endif
 
-#ifdef WL_ENABLE_VERIFY
+#if WL_ENABLE_VERIFY
 	#ifdef WL_COMPILER_CLANG
 		#define WL_CORE_VERIFY_MESSAGE_INTERNAL(...)  ::Walnut::Log::PrintAssertMessage(::Walnut::Log::Type::Core, "Verify Failed", ##__VA_ARGS__)
 		#define WL_VERIFY_MESSAGE_INTERNAL(...)  ::Walnut::Log::PrintAssertMessage(::Walnut::Log::Type::Client, "Verify Failed", ##__VA_ARGS__)
